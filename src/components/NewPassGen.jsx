@@ -1,16 +1,19 @@
-import { MouseScroll } from "@phosphor-icons/react";
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import icon1 from "../assets/Solid_head_heart.svg";
 import icon2 from "../assets/carbon_array_numbers.svg";
+import copy from "../assets/copy.svg";
 import { Checkbox } from "@radix-ui/themes";
 import ToggleGroupDemo from "./ToggleGroupDemo";
 import LengthSelector from "./LengthSelector";
+import * as motion from "motion/react-client";
+import { AnimatePresence } from "motion/react";
 
 function NewPassGen() {
   const [length, setLength] = useState(6);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [pass, setPass] = useState("");
+  const [show, setShow] = useState(false);
 
   const passwordRef = useRef(null);
 
@@ -52,14 +55,38 @@ function NewPassGen() {
 
         {/* password display */}
         <div className="container-max">
-          <div className="container-pass">
-            <span
-              className="text-[6rem] font-[Inclusive_Sans] tracking-[-0.1rem] text-[#11121440] flex justify-center"
+          <motion.div className="container-pass  flex w-full  justify-center items-center container-pass  relative">
+            <AnimatePresence>
+              {show && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0,
+                    ease: [0, 0.71, 0.2, 1.01],
+                  }}
+                  // className="absolute inset-0 w-30 flex flex-row items-center gap-3 font-[Work_Sans] text-[#393C43] text-sm font-semibold bg-gray-100   h-9 p-7 rounded-full justify-center  "
+
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 font-[Work_Sans] text-[#393C43] text-sm font-semibold bg-gray-100 h-10 px-6 py-6 rounded-full"
+                  onClick={() => {
+                    navigator.clipboard.writeText(pass);
+                  }}
+                >
+                  Copy
+                  <img className="size-5" src={copy} alt="copy" />
+                </motion.button>
+              )}
+            </AnimatePresence>
+            <motion.span
+              onHoverStart={() => setShow(true)}
+              onHoverEnd={() => setShow(false)}
+              className="text-[6rem]  flex font-[Inclusive_Sans] tracking-[-0.1rem] text-[#11121450]  justify-center hover:text-[#11121430] cursor-pointer select-all "
               ref={passwordRef}
             >
               {pass}
-            </span>
-          </div>
+            </motion.span>
+          </motion.div>
 
           {/* controls */}
           <div className="controls flex justify-center gap-6 items-center">
