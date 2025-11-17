@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --fs-sm: clamp(0.6rem, 0.05vi + 0.59rem, 0.63rem);
+  --fs-base: clamp(0.75rem, 0.45vi + 0.64rem, 1rem);
+  --fs-md: clamp(0.94rem, 1.2vi + 0.64rem, 1.6rem);
+  --fs-lg: clamp(1.17rem, 2.52vi + 0.54rem, 2.56rem);
+  --fs-xl: clamp(1.46rem, 4.78vi + 0.27rem, 4.1rem);
+  --fs-xxl: clamp(1.83rem, 8.59vi + -0.32rem, 6.55rem);
+  --fs-xxxl: clamp(2.29rem, 14.9vi + -1.44rem, 10.49rem);
+}

@@ -1,0 +1,67 @@
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+
+/* reset */
+button {
+  all: unset;
+}
+
+.ToggleGroup {
+  display: inline-flex;
+  /* background-color: var(--mauve-6); */
+  /* border-radius: 4px; */
+  /* box-shadow: 0 2px 10px var(--black-a7); */
+}
+
+.ToggleGroupItem {
+  /* background-color: white; */
+  /* color: var(--mauve-11); */
+  height: 35px;
+  width: 35px;
+  display: flex;
+  font-size: 15px;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1px;
+  user-select: none;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #aeaeb2;
+  margin: 0 2px;
+}
+/* .ToggleGroupItem:first-child {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}  
+   .ToggleGroupItem:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+} */
+.ToggleGroupItem:hover {
+  /* background-color: #f9731645; */
+  border-radius: 8px;
+  color: rgb(71, 71, 71);
+  cursor: pointer;
+}
+.ToggleGroupItem[data-state="on"] {
+  background-color: #f97316;
+  border-radius: 8px;
+  color: white;
+}
+.ToggleGroupItem:focus {
+  position: relative;
+  /* outer glow matching the Tailwind arbitrary shadow */
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.25);
+
+  /* 1px solid border with Tailwind amber-500 color */
+  border: 1px solid #f97316;
+
+  /* keep visual parity with rounded-2xl if desired */
+  border-radius: 8px;
+  /* border-radius: 1rem;
+   adjust as needed (Tailwind rounded-2xl ≈ 1rem) */
+  /* box-shadow: 0 0 0 2px black; */
+}
