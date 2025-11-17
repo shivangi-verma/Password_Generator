@@ -1,0 +1,28 @@
+.RadioGroup {
+  display: flex;
+  gap: 6px;
+}
+
+.RadioButton {
+  all: unset;
+  height: 35px;
+  width: 35px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #aeaeb2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.RadioButton:hover {
+  color: #444;
+}
+
+.RadioButton[data-state="checked"] {
+  background-color: #f97316;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.25);
+}

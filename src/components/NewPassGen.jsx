@@ -4,6 +4,7 @@ import icon1 from "../assets/Solid_head_heart.svg";
 import icon2 from "../assets/carbon_array_numbers.svg";
 import { Checkbox } from "@radix-ui/themes";
 import ToggleGroupDemo from "./ToggleGroupDemo";
+import LengthSelector from "./LengthSelector";
 
 function NewPassGen() {
   const [length, setLength] = useState(6);
@@ -51,7 +52,7 @@ function NewPassGen() {
 
         {/* password display */}
         <div className="container-max">
-          <div className="container">
+          <div className="container-pass">
             <span
               className="text-[6rem] font-[Inclusive_Sans] tracking-[-0.1rem] text-[#11121440] flex justify-center"
               ref={passwordRef}
@@ -64,13 +65,15 @@ function NewPassGen() {
           <div className="controls flex justify-center gap-6 items-center">
             {/* SLIDER SECTION */}
             <div className="slider flex bg-gray-100 p-2 rounded-2xl gap-4 justify-evenly items-center h-14">
-              <MouseScroll size={32} weight="light" className="rotate-90" />
-              <ToggleGroupDemo value={length} onValueChange={setLength} />
+              {/* <MouseScroll size={32} weight="light" className="rotate-90" /> */}
+              <span className="font-medium text-gray-500 pl-2">Length :</span>
+              {/* <ToggleGroupDemo value={length} onValueChange={setLength} /> */}
+              <LengthSelector value={length} onValueChange={setLength} />
             </div>
 
             {/* NUMBERS OPTION */}
             <div
-              className={`bg-gray-100 rounded-2xl p-4 flex gap-8 w-xs items-center ${
+              className={`bg-gray-100 hover:bg-gray-200 rounded-2xl p-4 flex gap-8 w-xs items-center ${
                 numberAllowed
                   ? "shadow-[0_0_0_4px_rgba(249,115,22,0.25)] border border-amber-500"
                   : ""
@@ -94,13 +97,13 @@ function NewPassGen() {
 
             {/* CHAR OPTION */}
             <div
-              className={`bg-gray-100 rounded-2xl p-4 flex gap-8 w-xs items-center ${
+              className={`bg-gray-100 hover:bg-gray-200 rounded-2xl p-4 flex gap-8 w-xs items-center ${
                 charAllowed
                   ? "shadow-[0_0_0_4px_rgba(249,115,22,0.25)] border border-amber-500"
                   : ""
               }`}
             >
-              <label className="flex items-center gap-2 cursor-pointer w-full justify-between">
+              <label className="flex items-center gap-2 cursor-pointer w-full justify-between ">
                 <div className="flex">
                   <img className="pr-2" src={icon1} alt="chars" />
                   <span className="font-medium text-gray-500">

@@ -1,43 +1,44 @@
 import * as React from "react";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import "./styles.css";
 
-const ToggleGroupDemo = ({ value, onValueChange }) => {
-  // ToggleGroup deals with string values, so we convert to/from strings here.
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
+
+function ToggleGroupDemo({ value, onValueChange }) {
   return (
     <ToggleGroup.Root
-      className="ToggleGroup"
       type="single"
       value={String(value)}
       onValueChange={(val) => {
-        // val can be null if nothing selected; guard it.
-        if (val === null) return;
-        // Convert string value to a number before sending to parent.
-        const num = Number(val);
-        if (!Number.isNaN(num)) onValueChange(num);
+        if (val === null) {
+          onValueChange(value);
+          return;
+        }
+        onValueChange(Number(val));
       }}
+      rovingFocus={false}
+      disableDeactivation
+      className="ToggleGroup"
     >
-      <ToggleGroup.Item className="ToggleGroupItem" value="8">
-        <p>8</p>
+      <ToggleGroup.Item value="6" className="ToggleGroupItem">
+        6
       </ToggleGroup.Item>
-
-      <ToggleGroup.Item className="ToggleGroupItem" value="10">
-        <p>10</p>
+      <ToggleGroup.Item value="8" className="ToggleGroupItem">
+        8
       </ToggleGroup.Item>
-
-      <ToggleGroup.Item className="ToggleGroupItem" value="12">
-        <p>12</p>
+      <ToggleGroup.Item value="10" className="ToggleGroupItem">
+        10
       </ToggleGroup.Item>
-
-      <ToggleGroup.Item className="ToggleGroupItem" value="16">
-        <p>16</p>
+      <ToggleGroup.Item value="12" className="ToggleGroupItem">
+        12
       </ToggleGroup.Item>
-
-      <ToggleGroup.Item className="ToggleGroupItem" value="24">
-        <p>24</p>
+      <ToggleGroup.Item value="16" className="ToggleGroupItem">
+        16
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="24" className="ToggleGroupItem">
+        24
       </ToggleGroup.Item>
     </ToggleGroup.Root>
   );
-};
+}
 
 export default ToggleGroupDemo;
