@@ -192,9 +192,9 @@ function NewPassGen() {
             Made by &nbsp; <span className="text-black">Shivangi</span>
           </span>
           {/* dark mode btn moon */}
-          {/* <button className=" absolute right-10 bottom-6 bg-gray-600 p-4 rounded-full shadow-black/20 hover:bg-gray-700 transition-colors  cursor-pointer">
+          <button className=" absolute right-10 bottom-6 bg-gray-600 p-4 rounded-full shadow-black/20 hover:bg-gray-700 transition-colors  cursor-pointer">
             <MoonIcon size={28} color="#ffffff" weight="duotone" />
-          </button> */}
+          </button>
           {/* light mode btn sun */}
 
           {/* <button className=" absolute right-10 bottom-6 border border-amber-500 bg-[#F9731615] p-4 rounded-full shadow-black/20 hover:bg-[#F9731630] transition-colors cursor-pointer">
