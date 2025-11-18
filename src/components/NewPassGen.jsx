@@ -7,6 +7,7 @@ import LengthSelector from "./LengthSelector";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
 import { CheckCircleIcon } from "@phosphor-icons/react";
+import Button from "./Button";
 
 function NewPassGen() {
   const [length, setLength] = useState(6);
@@ -17,6 +18,7 @@ function NewPassGen() {
   const [isActive, setIsActive] = useState(false);
   // for copy button's active state
   const [forceHide, setForceHide] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleCopyClick = () => {
     setIsActive(!isActive);
@@ -184,7 +186,8 @@ function NewPassGen() {
         </div>
 
         {/* FOOTER */}
-        <div className="footer">
+
+        <div className="footer">  
           <span className="text-[28px] font-[DM_Sans] text-[#11121480] flex justify-center">
             Made by &nbsp; <span className="text-black">Shivangi</span>
           </span>

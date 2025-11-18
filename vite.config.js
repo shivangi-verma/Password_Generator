@@ -22,6 +22,18 @@ export default defineConfig({
     rollupOptions: {
       input: resolve(__dirname, "index.html"),
     },
+    build: {
+      minify: "terser",
+      terserOptions: {
+        // Optional: Configure terser options here
+        format: {
+          comments: false, // Example: remove all comments
+        },
+        compress: {
+          drop_console: true, // Example: remove console.log statements
+        },
+      },
+    },
     target: "es2018",
   },
 });
