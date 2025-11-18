@@ -6,7 +6,7 @@ import { Checkbox } from "@radix-ui/themes";
 import LengthSelector from "./LengthSelector";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
-import { CheckCircleIcon } from "@phosphor-icons/react/dist/csr/CheckCircleIcon";
+import { CheckCircleIcon } from "@phosphor-icons/react";
 
 function NewPassGen() {
   const [length, setLength] = useState(6);
@@ -16,6 +16,7 @@ function NewPassGen() {
   const [show, setShow] = useState(false);
   const [isActive, setIsActive] = useState(false);
   // for copy button's active state
+  const [forceHide, setForceHide] = useState(false);
 
   const handleCopyClick = () => {
     setIsActive(!isActive);
@@ -70,7 +71,7 @@ function NewPassGen() {
           >
             <AnimatePresence>
               {/* showing the copy button  */}
-              {show && (
+              {show && !forceHide && (
                 <motion.button
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -79,24 +80,42 @@ function NewPassGen() {
                     delay: 0,
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
-                  exit={{ opacity: 0, scale: 0.5 }}
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 font-[Work_Sans] text-sm font-semibold bg-gray-100 h-10 px-6 py-6 rounded-full cursor-pointer 
-                   ${isActive ? "text-white " : " text-[#393C43]"} `}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.5,
+                    transition: {
+                      duration: 0.5,
+                      delay: 0.2,
+                      ease: [0, 0.71, 0.2, 1.01],
+                    },
+                  }}
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 font-[Work_Sans] text-sm font-semibold  h-10 px-6 py-6 rounded-full cursor-pointer 
+                   ${
+                     isActive
+                       ? "text-white bg-[#34C759] shadow-[0_0_0_4px_rgba(52,199,89,0.25)] "
+                       : " text-[#393C43] bg-gray-100"
+                   } `}
                   onClick={() => {
                     setIsActive(true);
                     setTimeout(() => setIsActive(false), 1000); // reset after 1 second
-                    // navigator.clipboard.writeText(pass);
+                    navigator.clipboard.writeText(pass);
                   }}
                 >
-                  Copy
-                  <img className="size-5" src={copy} alt="copy" />
-                  <CheckCircleIcon size={20} weight="light" />
+                  {` ${isActive ? "Copied" : "Copy"}`}
+                  <img
+                    className={`size-5  ${isActive ? "hidden" : " block"} `}
+                    src={copy}
+                    alt="copy"
+                  />
+                  <CheckCircleIcon
+                    className={` size-6   ${isActive ? "block" : "hidden"}`}
+                  />
                 </motion.button>
               )}
             </AnimatePresence>
             <motion.span
-              className={`text-[7.5rem]  flex font-[Inclusive_Sans] tracking-[-0.1rem] text-[#11121450]    justify-center  cursor-pointer select-all  ${
-                isActive ? "text-green-600" : " text-[#393C43]"
+              className={`text-[7.5rem]  flex font-[Inclusive_Sans] tracking-[-0.4rem]     justify-center  cursor-pointer select-all  ${
+                isActive ? "text-[#34C75930]" : " text-[#11121450]"
               } `}
               ref={passwordRef}
             >
