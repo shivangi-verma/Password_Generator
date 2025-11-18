@@ -6,6 +6,7 @@ import { Checkbox } from "@radix-ui/themes";
 import LengthSelector from "./LengthSelector";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
+import { CheckCircleIcon } from "@phosphor-icons/react/dist/csr/CheckCircleIcon";
 
 function NewPassGen() {
   const [length, setLength] = useState(6);
@@ -13,6 +14,14 @@ function NewPassGen() {
   const [charAllowed, setCharAllowed] = useState(false);
   const [pass, setPass] = useState("");
   const [show, setShow] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  // for copy button's active state
+
+  const handleCopyClick = () => {
+    setIsActive(!isActive);
+    setTimeout(() => setIsActive(false), 1000); // reset after 1 second
+    navigator.clipboard.writeText(pass);
+  };
 
   const passwordRef = useRef(null);
 
@@ -71,18 +80,24 @@ function NewPassGen() {
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
                   exit={{ opacity: 0, scale: 0.5 }}
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 font-[Work_Sans] text-[#393C43] text-sm font-semibold bg-gray-100 h-10 px-6 py-6 rounded-full cursor-pointer"
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 font-[Work_Sans] text-sm font-semibold bg-gray-100 h-10 px-6 py-6 rounded-full cursor-pointer 
+                   ${isActive ? "text-white " : " text-[#393C43]"} `}
                   onClick={() => {
-                    navigator.clipboard.writeText(pass);
+                    setIsActive(true);
+                    setTimeout(() => setIsActive(false), 1000); // reset after 1 second
+                    // navigator.clipboard.writeText(pass);
                   }}
                 >
                   Copy
                   <img className="size-5" src={copy} alt="copy" />
+                  <CheckCircleIcon size={20} weight="light" />
                 </motion.button>
               )}
             </AnimatePresence>
             <motion.span
-              className="text-[7.5rem]  flex font-[Inclusive_Sans] tracking-[-0.1rem] text-[#11121450]    justify-center  cursor-pointer select-all "
+              className={`text-[7.5rem]  flex font-[Inclusive_Sans] tracking-[-0.1rem] text-[#11121450]    justify-center  cursor-pointer select-all  ${
+                isActive ? "text-green-600" : " text-[#393C43]"
+              } `}
               ref={passwordRef}
             >
               {pass}
