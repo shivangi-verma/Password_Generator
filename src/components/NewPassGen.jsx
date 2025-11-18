@@ -6,7 +6,7 @@ import { Checkbox } from "@radix-ui/themes";
 import LengthSelector from "./LengthSelector";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
-import { CheckCircleIcon } from "@phosphor-icons/react";
+import { CheckCircleIcon, MoonIcon, SunIcon } from "@phosphor-icons/react";
 import Button from "./Button";
 
 function NewPassGen() {
@@ -187,10 +187,19 @@ function NewPassGen() {
 
         {/* FOOTER */}
 
-        <div className="footer">  
+        <div className="footer">
           <span className="text-[28px] font-[DM_Sans] text-[#11121480] flex justify-center">
             Made by &nbsp; <span className="text-black">Shivangi</span>
           </span>
+          {/* dark mode btn moon */}
+          {/* <button className=" absolute right-10 bottom-6 bg-gray-600 p-4 rounded-full shadow-black/20 hover:bg-gray-700 transition-colors  cursor-pointer">
+            <MoonIcon size={28} color="#ffffff" weight="duotone" />
+          </button> */}
+          {/* light mode btn sun */}
+
+          {/* <button className=" absolute right-10 bottom-6 border border-amber-500 bg-[#F9731615] p-4 rounded-full shadow-black/20 hover:bg-[#F9731630] transition-colors cursor-pointer">
+            <SunIcon size={28} color="#f97316" weight="duotone" />
+          </button> */}
         </div>
       </div>
     </>
