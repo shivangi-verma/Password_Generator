@@ -8,7 +8,7 @@ const LengthSelector = ({ value, onValueChange }) => {
       value={String(value)}
       onValueChange={(val) => onValueChange(Number(val))}
     >
-      {[6, 8, 10, 12, 16, 24].map((num) => (
+      {[6, 8, 10, 12, 16].map((num) => (
         <RadioGroup.Item key={num} value={String(num)} className="RadioButton">
           {num}
         </RadioGroup.Item>
