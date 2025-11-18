@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import icon1 from "../assets/Solid_head_heart.svg";
 import icon2 from "../assets/carbon_array_numbers.svg";
-import copy from "../assets/copy.svg";
+import copyIcon from "../assets/copyIcon.svg";
 import { Checkbox } from "@radix-ui/themes";
 import LengthSelector from "./LengthSelector";
 import * as motion from "motion/react-client";
@@ -106,7 +106,7 @@ function NewPassGen() {
                   {` ${isActive ? "Copied" : "Copy"}`}
                   <img
                     className={`size-5  ${isActive ? "hidden" : " block"} `}
-                    src={copy}
+                    src={copyIcon}
                     alt="copy"
                   />
                   <CheckCircleIcon
