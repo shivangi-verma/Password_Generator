@@ -7,6 +7,10 @@ import LengthSelector from "./LengthSelector";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
 import { CheckCircleIcon, MoonIcon, SunIcon } from "@phosphor-icons/react";
+import { gsap } from "gsap";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+
+gsap.registerPlugin(ScrambleTextPlugin);
 import Button from "./Button";
 
 function NewPassGen() {
@@ -50,12 +54,23 @@ function NewPassGen() {
         newPass.substring(randomIndex + 1);
     }
 
-    setPass(newPass);
+    gsap.to(passwordRef.current, {
+      duration: 1,
+      scrambleText: newPass,
+      onComplete: () => {
+        setPass(newPass);
+      },
+    });
+
+    // setPass(newPass);
   }, [length, numberAllowed, charAllowed]);
 
   useEffect(() => {
     passwordGenerator();
   }, [length, numberAllowed, charAllowed, passwordGenerator]);
+
+  //use the defaults
+  // gsap.to("#password", { duration: 1, scrambleText: { pass }});
 
   return (
     <>
@@ -116,6 +131,7 @@ function NewPassGen() {
               )}
             </AnimatePresence>
             <motion.span
+              id="password"
               className={`text-[7.5rem]  flex font-[Inclusive_Sans] tracking-[-0.4rem]     justify-center  cursor-pointer select-all  ${
                 isActive ? "text-[#34C75930]" : " text-[#11121450]"
               } `}
