@@ -1,16 +1,47 @@
-# React + Vite
+# Password Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live demo:** https://passswordss.netlify.app/
 
-Currently, two official plugins are available:
+![App Demo](./assets/Passwords_Generator_GIF.gif)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What is this  
+A tiny, aesthetic password generator built in React. Generates secure random passwords with optional numbers and special characters. Includes a smooth scrambling animation (GSAP ScrambleText) and a friendly copy button.
 
-## Expanding the ESLint configuration
+> TL;DR: click, copy, flex.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+- Crypto-safe random generation (`crypto.getRandomValues`)
+- Toggle numbers + special characters
+- Adjustable password length
+- GSAP scramble animation when regenerating passwords
+- Copy-to-clipboard with visual feedback
+- Clean, responsive UI
+
+## Tech Stack
+- **React** (Hooks)
+- **GSAP** + ScrambleTextPlugin  
+- **Radix UI** — Checkbox  
+- **Phosphor Icons**
+- **Tailwind CSS**
+
+## Key Files
+- `src/components/NewPassGen.jsx` — main generator logic & animations  
+- `src/components/LengthSelector.jsx` — password length UI  
+- `src/components/Button.jsx` — reusable button  
+- `src/assets/*` — icons  
+
+## Install & Run
+
+```bash
+# clone the repo
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+cd YOUR_REPO
+
+# install deps
+npm install
+
+# run dev server
+npm start
