@@ -1,9 +1,8 @@
-# Password Generator
+# [Password Generator](https://passswordss.netlify.app/)
 
 **Live demo:** https://passswordss.netlify.app/
 
-![App Demo](./assets/Passwords_Generator_GIF.gif)
-
+[![App Demo](./public/Passwords_Generator_GIF.gif)](https://passswordss.netlify.app/)
 
 ---
 
