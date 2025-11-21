@@ -75,16 +75,17 @@ function NewPassGen() {
   return (
     <>
       <div className="flex flex-col w-full h-screen justify-between pb-6">
-        <span className="text-(size:--fs-xxxl) text-nowrap font-[Work_Sans] tracking-[-0.6rem] text-[#A9C5EA66] leading-[0.7] text-center">
-          Password Generator
-        </span>
-
-        {/* password display */}
+        <div className="flex justify-center ">
+          <span className="tracking-[-0.2rem] text-(size:--fs-xxxl) text-nowrap font-[Work_Sans] sm:tracking-[-0.6rem] text-[#A9C5EA66] leading-[0.7] text-center ">
+            Password Generator
+          </span>
+        </div>
+        {/* password display */}  
         <div className="container-max">
           <motion.div
             onHoverStart={() => setShow(true)}
             onHoverEnd={() => setShow(false)}
-            className="container-pass  flex w-full  justify-center items-center container-pass  relative"
+            className="container-pass  flex w-full  justify-center items-center container-pass  relative "
           >
             <AnimatePresence>
               {/* showing the copy button  */}
@@ -132,7 +133,7 @@ function NewPassGen() {
             </AnimatePresence>
             <motion.span
               id="password"
-              className={`text-[7.5rem]  flex font-[Inclusive_Sans] tracking-[-0.4rem]     justify-center  cursor-pointer select-all  ${
+              className={`text-[7.5rem]  flex font-[Inclusive_Sans] tracking-[-0.4rem] justify-center  cursor-pointer select-all  ${
                 isActive ? "text-[#34C75930]" : " text-[#11121450]"
               } `}
               ref={passwordRef}
@@ -142,7 +143,7 @@ function NewPassGen() {
           </motion.div>
 
           {/* controls */}
-          <div className="controls flex justify-center gap-6 items-center">
+          <div className="controls flex justify-center gap-6 items-center max-md:flex-col">
             {/* SLIDER SECTION */}
             <div className="slider flex bg-gray-100 p-2 rounded-2xl gap-4 justify-evenly items-center h-14">
               {/* <MouseScroll size={32} weight="light" className="rotate-90" /> */}

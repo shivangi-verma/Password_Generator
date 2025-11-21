@@ -7,5 +7,5 @@
   --fs-lg: clamp(1.17rem, 2.52vi + 0.54rem, 2.56rem);
   --fs-xl: clamp(1.46rem, 4.78vi + 0.27rem, 4.1rem);
   --fs-xxl: clamp(1.83rem, 8.59vi + -0.32rem, 6.55rem);
-  --fs-xxxl: clamp(2.29rem, 14.9vi + -1.44rem, 10.49rem);
+  --fs-xxxl: clamp(4rem, 14.9vi + -1.44rem, 10rem);
 }
