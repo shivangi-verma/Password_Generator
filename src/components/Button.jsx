@@ -1,41 +1,59 @@
-import { cva } from "class-variance-authority";
-import { motion } from "framer-motion";
 import React from "react";
-
-const cn = (...classes) => classes.filter(Boolean).join(" ");
+import { cva } from "class-variance-authority";
+import { cn } from "../lib/utils";
+import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 
 const buttonStyles = cva(
-  "inline-flex items-center justify-center transition-all duration-200",
+  "inline-flex items-center justify-center rounded-full transition-colors cursor-pointer shadow-black/20",
   {
     variants: {
       variant: {
-        copyBtn:
-          "flex items-center gap-2 font-[Work_Sans] text-sm font-semibold h-10 px-6 py-6 rounded-full cursor-pointer text-[#393C43] bg-gray-100",
-        copyBtnActive:
-          "flex items-center gap-2 font-[Work_Sans] text-sm font-semibold h-10 px-6 py-6 rounded-full cursor-pointer text-white bg-[#34C759] shadow-[0_0_0_4px_rgba(52,199,89,0.25)]",
+        primary: "bg-blue-600 text-white hover:bg-blue-700",
+        secondary: "bg-gray-200 text-black hover:bg-gray-300",
+        ghost: "bg-transparent hover:bg-gray-100",
+
+        darkToggle:
+          "absolute right-10 bottom-6 bg-gray-600 p-4 hover:bg-gray-700",
+        lightToggle:
+          "absolute right-10 bottom-6 border border-amber-500 bg-[#F9731615] p-4 hover:bg-[#F9731630]",
+      },
+      size: {
+        sm: "p-2",
+        md: "p-3",
+        lg: "p-4",
       },
     },
     defaultVariants: {
-      variant: "copyBtn",
+      variant: "primary",
+      size: "md",
     },
   }
 );
 
-const Button = ({ children, variant, className, disabled, ...props }) => {
+export default function Button({
+  variant,
+  size,
+  className,
+  children,
+  ...props
+}) {
+  let icon = null;
+
+  // insert icons automatically based on the variant
+  if (variant === "darkToggle") {
+    icon = <MoonIcon size={28} color="#ffffff" weight="duotone" />;
+  }
+
+  if (variant === "lightToggle") {
+    icon = <SunIcon size={28} color="#f97316" weight="duotone" />;
+  }
+
   return (
-    <motion.button
-      className={cn(buttonStyles({ variant }), className)}
-      //   whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.94 }}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.2 }}
+    <button
+      className={cn(buttonStyles({ variant, size }), className)}
       {...props}
     >
-      {children}
-    </motion.button>
+      {icon || children}
+    </button>
   );
-};
-
-export default Button;
+}
